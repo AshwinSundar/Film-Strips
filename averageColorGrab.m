@@ -1,10 +1,11 @@
 tic
 season = '01';
-episode = '03';
-videoLength = 3699; 
+episode = '05';
+videoLength = 3699;
+parpool(8); % declares how many cores you want to use 
 
 averageEpisodeColor = zeros(1,videoLength,3); % preallocates an array
-for j=1:9
+parfor j=1:9
     imageName = strcat('s',season,'e',episode,'-00',int2str(j),'.jpeg');
     imageMatrix = imread(imageName);
     averageR = floor(sum(sum(imageMatrix(:,:,1)))/720/1280 + 0.5);
@@ -16,7 +17,7 @@ for j=1:9
     averageEpisodeColor(1,j,3) = averageB;
 end
         
- for j=10:99
+ parfor j=10:99
     imageName = strcat('s',season,'e',episode,'-0',int2str(j),'.jpeg');
     imageMatrix = imread(imageName);
     averageR = floor(sum(sum(imageMatrix(:,:,1)))/720/1280 + 0.5);
@@ -28,7 +29,7 @@ end
     averageEpisodeColor(1,j,3) = averageB;
 end
  
- for j=100:videoLength
+ parfor j=100:videoLength
     imageName = strcat('s',season,'e',episode,'-',int2str(j),'.jpeg');
     imageMatrix = imread(imageName);
     averageR = floor(sum(sum(imageMatrix(:,:,1)))/720/1280 + 0.5);
@@ -40,7 +41,10 @@ end
     averageEpisodeColor(1,j,3) = averageB;
  end
  
- csvwrite(strcat('average','s',season,'e',episode,'R'), averageEpisodeColor(:,:,1));
- csvwrite(strcat('average','s',season,'e',episode,'G'), averageEpisodeColor(:,:,2));
- csvwrite(strcat('average','s',season,'e',episode,'B'), averageEpisodeColor(:,:,3));
+ averageEpisodeColor = repmat(averageEpisodeColor, 720, 1);
+ imshow(mat2gray(averageEpisodeColor));
+ set(gcf,'PaperUnits','inches','PaperPosition',[0,0,videoLength,715])
+ set(gca,'position',[0 0 1 1],'units','normalized')
  toc
+  
+ 
