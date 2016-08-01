@@ -2,7 +2,9 @@ tic
 season = '01';
 episode = '05';
 videoLength = 3699;
-parpool(8); % declares how many cores you want to use 
+parpool(8); % declares how many cores you want to use. 
+% Set this to the number of real cores your computer has (not virtual cores). 
+% If your run into issues, comment out parpool() and change all "parfor"'s below to "for"
 
 averageEpisodeColor = zeros(1,videoLength,3); % preallocates an array
 parfor j=1:9
