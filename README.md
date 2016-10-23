@@ -16,7 +16,7 @@ If you want to extract just a limited number of frames, you can use the above co
 
 	http://ffmpeg.org/download.html
 
-2) extra images from the video
+2) Extract images from the video
 
 	a) Navigate to C:\Users\Ashwin\Documents\ffmpeg-20160610-git-0a9e781-win64-static (or wherever you unzipped ffmpeg to)
 
