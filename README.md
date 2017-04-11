@@ -1,4 +1,4 @@
-# Converting videos to images
+# The Color of Film
 They say a picture is worth a thousand words, so I took that literally and built average color pictures for each episode in the first season of Game of Thrones. Each vertical line represents one second of the show. Here's what I got : https://imgur.com/a/naPeJ
 
 Here's some examples using a couple of popular movies: https://imgur.com/a/4g2lJ
